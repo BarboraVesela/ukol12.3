@@ -1,54 +1,46 @@
-
-  ///////// UKOL
-   
-  /* const parseDate = (date) => {
-        return {
-            day: Number(date.slice(0,2)),
-            month: Number(date.slice(3,5)),
-            year: Number(date.slice(6,10)),
-        }
-    }
-
-    console.log(parseDate('03.04.2023'))
-
-
-    let day = prompt('Zadej den:');
-    let month = prompt('Zadej mesic: ');
-    let year = prompt('Zadej rok: ');
-
-   */
-   
-// Format 
-
-    const formatDate = ({day,month,year}) => {
-    
-        return(document.body.innerHTML += 'Datum je: ' + day.padStart(2,'0') + '.' + month.padStart(2,'0') + '.' + year)
-    }
-
-    let zadani = {
-        day:prompt('Zadej den: '),
-        month:prompt('Zadej mesic: '),
-        year:prompt('Zadej rok: '),
-    }
-
-    const {day, month, year} = zadani
-
-    formatDate(zadani)
-
-    
-// Zaokrouhlovni 
-const round = (number) => {
-    const integer = Math.trunc(number);
-    const float = number - integer;
-
-    if (Math.abs(float) === 0.5) {
-        if (integer % 2 === 0){
-                return integer
-            } else {
-                return integer + 2 * float
-            }
-        }
-        return console.log(Math.round(number))
+const salary = (wage,hours,days) => {
+	return Math.round(wage * hours * days);
 }
 
-round(prompt('Enter a number: '))
+const taxed = (salary, taxPercentage) => {
+	return Math.round(salary*((100 - taxPercentage)/100));
+}
+
+const wage = 125
+const hours = 8
+const days = 21
+const beforeTaxation = salary(wage, hours, days)
+const afterTaxation = taxed(beforeTaxation, 15)
+
+document.body.innerHTML = `
+	<p>Wage: ${wage} Kč</p>
+	<p>Hours: ${hours}</p>
+	<p>Days: ${days}</p>
+	<p>Before taxation: ${beforeTaxation} Kč</p>
+	<p>After taxation: ${afterTaxation} Kč</p>
+`;
+
+
+let zadani = {
+	number1:prompt('Zadej cislo: '),
+	operation:prompt('Zadej operator: '),
+	number2:prompt('Zadej druhe cislo: '),
+}
+
+
+const calculate = (number1,operation,number2) => {
+	if (operation === '+') {
+		return number1 + number2;
+	} else if (operation === '-') {
+        return number1 - number2;
+    } else if (operation === '*') {
+        return number1 * number2;
+    } else if (operation === '/') {
+        return number1 * number2;
+    } else {
+        return false;
+	}
+}
+
+calculate(zadani);
+console.log(calculate);
